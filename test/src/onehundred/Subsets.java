@@ -33,7 +33,7 @@ public class Subsets {
     
     // advanced: using bit manipulation 
     // m elements, 2^m subsets , binary representation of int from 0 to (2^m)-1 
-    // shows are the subsets
+    // are the subsets
     
 /*    public List<List<Integer>> subsets(int[] S) {
         Arrays.sort(S);

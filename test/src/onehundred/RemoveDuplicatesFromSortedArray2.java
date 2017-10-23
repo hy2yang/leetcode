@@ -18,8 +18,5 @@ public class RemoveDuplicatesFromSortedArray2 {
             if(j+1<nums.length && nums[j]==nums[j+1]) nums[i++]=nums[++j];
         }
         return i;
-    }
-    
-    
-
+    }   
 }
