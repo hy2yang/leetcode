@@ -15,7 +15,7 @@ public class Triangle {
         b.add(-3);
         t.add(a);
         t.add(b);
-        minimumTotal(t);
+        minimumTotal2(t);
 
     }
     
@@ -32,6 +32,17 @@ public class Triangle {
             }
         }
         return min;
+    }
+    
+    public static int minimumTotal2(List<List<Integer>> t) {   // bottom to top
+        int n=t.size();
+        int[] dp=new int[n+1];
+        for (int i=n-1;i>=0;--i) {
+            for (int j=0;j<=i;++j) {
+                dp[j]=Math.min(dp[j], dp[j+1])+t.get(i).get(j);
+            }
+        }
+        return dp[0];
     }
 
 }
