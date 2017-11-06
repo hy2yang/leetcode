@@ -1,6 +1,8 @@
 package binaryTree;
 
 public class BalancedBinaryTree_110 {
+    // A height-balanced binary tree is defined as 
+    // a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
     
     public boolean isBalanced(TreeNode root) {
         return balancedOrHeight(root)!=-1;
