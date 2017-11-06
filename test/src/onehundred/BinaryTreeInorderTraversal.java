@@ -35,7 +35,7 @@ public class BinaryTreeInorderTraversal {
         ArrayList<Integer> res=new ArrayList<Integer>();
         if (root==null) return res;
         Stack<TreeNode> s=new Stack<>();
-        while (root!=null && !s.isEmpty()) {
+        while (root!=null || !s.isEmpty()) {
             while (root!=null) {
                 s.push(root);
                 root=root.left;
