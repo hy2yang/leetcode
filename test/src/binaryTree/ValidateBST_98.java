@@ -2,8 +2,6 @@ package binaryTree;
 
 import java.util.ArrayDeque;
 
-import onehundred.TreeNode;
-
 public class ValidateBST_98 {
     
     // The left subtree of a node contains only nodes with keys less than the node's key.     -whole child tree rather than a child node
