@@ -1,4 +1,4 @@
-package arrays;
+package strings;
 
 public class ValidPalindrome_125 {
     
