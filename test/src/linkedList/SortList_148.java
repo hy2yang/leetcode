@@ -1,4 +1,4 @@
-package linkList;
+package linkedList;
 
 public class SortList_148 {
     //Sort a linked list in O(n log n) time using constant space complexity.
