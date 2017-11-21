@@ -37,7 +37,7 @@ public class CloneGraph_133 {
         
         map.put(node, copy);                            // put this pair in first, or the recursion will not stop
                                                         // Undirected Graph: A is neighbor of B <-> B is neighbor of A
-        for (UndirectedGraphNode n : node.neighbors)
+        for (UndirectedGraphNode n : node.neighbors)    // if not put first A-Acopy, in adding neighbors of A it get back to A, dead loop
             copy.neighbors.add(cloneGraph(n, map));
         
         return copy;
