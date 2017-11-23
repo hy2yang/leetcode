@@ -11,7 +11,6 @@ Given "foo", "bar", return false.
 Given "paper", "title", return true.
 */
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class IsomorphicStrings_205 {
