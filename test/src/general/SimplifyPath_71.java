@@ -14,12 +14,12 @@ Another corner case is the path might contain multiple slashes '/' together, suc
 In this case, you should ignore redundant slashes and return "/home/foo".
 */
 
-import java.util.Stack;
+import java.util.ArrayDeque;
 
 public class SimplifyPath_71 {
     
     public static String simplifyPath(String path) {
-        Stack<String> s=new Stack<>();
+        ArrayDeque<String> s=new  ArrayDeque<>();
         String[] parts=path.split("/");
         
         for (int i=0;i<parts.length;++i) {
@@ -33,7 +33,7 @@ public class SimplifyPath_71 {
         if (s.isEmpty()) return "/";
         StringBuilder sb=new StringBuilder();
         while (!s.isEmpty()) {
-            sb.append("/"+s.pop());
+            sb.append("/"+s.pollLast());
         }
         return sb.toString();
         
