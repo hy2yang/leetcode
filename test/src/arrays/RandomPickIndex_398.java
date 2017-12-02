@@ -65,5 +65,26 @@ public class RandomPickIndex_398 {
             return result;
         }
     }
+    
+    class mySolution {
+
+        int[] nums;
+
+        public mySolution(int[] nums) {
+            this.nums = nums;
+        }
+        
+        public int pick(int target) {
+            int result = -1;
+            int count = 0;
+            for (int i = 0; i < nums.length; i++) {
+                if (nums[i] == target) {
+                    ++count;
+                    if (Math.random()*count<1) result=i;
+                }
+            }
+            return result;
+        }
+    }
 
 }
