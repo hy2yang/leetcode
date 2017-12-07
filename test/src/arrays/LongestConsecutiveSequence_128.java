@@ -15,25 +15,17 @@ Your algorithm should run in O(n) complexity.
 public class LongestConsecutiveSequence_128 {
     
     public int longestConsecutive(int[] nums) {
-        int res=0;
         HashSet<Integer> set=new HashSet<>();
         for (int i:nums) {
             set.add(i);
         }
-        int n,len;
-        for (int i:nums) {
-            len=1;
-            n=i;
-            while (set.contains(n-1)) {
-                ++len;
-                set.remove(--n);
+        int n, res=0;
+        for (int i:set) {
+            if (!set.contains(i-1)){
+                n=i+1;
+                while (set.contains(n)) ++n; 
+                if (n-i>res) res=n-i;
             }
-            n=i;
-            while (set.contains(n+1)) {
-                ++len;
-                set.remove(++n);
-            }
-            if (len>res) res=len;
         }
         return res;
     }
