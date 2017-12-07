@@ -51,9 +51,23 @@ public class CombinationSum4_377 {
     }
     
     
-    public int combinationSum4_dp(int[] nums, int target) {
+    public int combinationSum4_dp(int[] nums, int target) {   // recursive dp
         int[] dp =new int[target+1];
-        
+        Arrays.fill(dp, -1);
+        dp[0]=1;        
+        return dpHelper(dp, nums, target);
+    }
+    
+    private int dpHelper(int[] dp, int[] nums, int target) {
+        if (dp[target]!=-1) return dp[target];
+        int res=0;
+        for (int i=0;i<nums.length;++i) {
+            if (nums[i]<=target) {
+                res+=dpHelper(dp, nums, target-nums[i]);     // dp[x]= sum(dp[x-nums[i]) i from 0 to nums.length-1; 
+            }                                                //             this means combinations when last number is nums[i]
+        }
+        dp[target]=res;
+        return res;
     }
     
 }
