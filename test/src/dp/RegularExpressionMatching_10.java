@@ -38,7 +38,7 @@ public class RegularExpressionMatching_10 {
         boolean[] pre=new boolean[p.length()+1];
         
         dp[0]=true;  //base
-        for (int j = 2; j <dp.length; j+=2) {
+        for (int j = 2; j <dp.length; j+=2) {           // when i==0 (empty string), odd numbers of characters can not match
             dp[j]= p.charAt(j - 1) == '*' && dp[j-2];            
         }
         
