@@ -31,12 +31,12 @@ public class JumpGame2_45 {
     
     public int jump(int[] nums) {
         int jumped=0, range=0, lastrange=0;
-        for (int i=0;i<nums.length;++i){
-            if (i-1==lastrange){
+        for (int i=0;i<nums.length-1;++i){
+            if (i+nums[i]>range) range=i+nums[i];
+            if (i==lastrange){
                 ++jumped;
                 lastrange=range;
-            }            
-            range=Math.max(range, i+nums[i]);
+            }
         }
         return jumped;
     }
