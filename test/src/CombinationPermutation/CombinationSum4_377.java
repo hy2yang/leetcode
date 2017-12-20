@@ -1,4 +1,4 @@
-package arrays;
+package CombinationPermutation;
 
 import java.util.Arrays;
 import java.util.HashMap;
