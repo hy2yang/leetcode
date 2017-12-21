@@ -1,4 +1,4 @@
-package CombinationPermutation;
+package combination_permutation;
 
 import java.util.Arrays;
 import java.util.HashMap;
