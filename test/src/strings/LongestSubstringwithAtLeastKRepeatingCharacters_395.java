@@ -31,7 +31,10 @@ public class LongestSubstringwithAtLeastKRepeatingCharacters_395 {
         
         boolean qualify=true;
         for (int i=0;i<map.length;++i) {
-            if (map[i]>0 && map[i]<k) qualify=false;  // if the whole string qualifies
+            if (map[i]>0 && map[i]<k) {
+                qualify=false;  // if the whole string qualifies
+                break;
+            }
         }
         if (qualify) return c.length;
         
