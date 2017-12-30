@@ -38,16 +38,18 @@ public class LongestSubstringwithAtLeastKRepeatingCharacters_395 {
         }
         if (qualify) return c.length;
         
-        int res=0, start=0, pos=0, len;
-        while(pos<c.length) {
-            if (map[c[pos]-'a']<k) {               // use this unqualified char as splitor
-                len=longestSubstring(s.substring(start, pos),k);  // check the mid part between two split positions
+        int res=0, start=0, end=0, len;
+        while(start<c.length) {
+            if (map[c[start]-'a']<k) ++start;       // ignore unqualified chars
+            else { 
+                end=start+1;
+                while(end<c.length && map[c[end]-'a']>=k ) ++end;    // find next unqualified char as end
+                len=longestSubstring(s.substring(start, end),k);  // check the mid part between two split positions
                 if (len>res) res=len;
-                start=pos+1;
-            }
-            ++pos;
+                start=end+1;
+            }            
         }
-        return Math.max(res, longestSubstring(s.substring(start),k));  // last part
+        return res; 
     }
     
 
