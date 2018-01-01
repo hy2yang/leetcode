@@ -26,5 +26,11 @@ public class PartitionEqualSubsetSum_416 {
         }
         return dp[sum];
     }
-
+    /*
+    dp[i][j] means whether the specific sum j can be gotten from the first i numbers.
+    Base case: dp[0][0] is true;
+    Transition function: dp[i][j] = dp[i-1][j] || dp[i-1][j-nums[i]];
+    For each number, if we don’t pick it, dp[i][j] = dp[i-1][j],
+    If we pick nums[i]. dp[i][j] = dp[i-1][j-nums[i]].
+    */
 }
