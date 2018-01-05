@@ -31,15 +31,18 @@ public class TaskScheduler_621 {
         for (char c: tasks) {
             ++f[c-'A'];
         }
-        int lowfreq=25;
-        Arrays.sort(f);             // only frquency matters, not actual task
-        while (lowfreq>=0 && f[lowfreq]==f[25]) --lowfreq;  // if f[i]==f[25], i is one of the most frequent tasks
         
-        return Math.max(tasks.length, (f[25]-1)*(n+1)+25-lowfreq);
+        int hifreq=0;
+        Arrays.sort(f);             // only frquency matters, not actual task
+        for (int i=25;i>=0;--i){
+            if (f[i]==f[25]) ++hifreq;  // if f[i]==f[25], i is one of the most frequent tasks
+            else break;
+        }
+        return Math.max(tasks.length, (f[25]-1)*(n+1)+hifreq);
         
         // if lowfreq task fills all or more idles, result would be tasks.length;
         // else, ABCDABC AB  AB, f[25]-1 is number of full cycles, n+1 is full cycle length (n plus one most frequent in lead),
-        // 25-lowfreq is number of most frequent tasks, aka length of the last, partial cycle 
+        // hifreq is number of most frequent tasks, aka length of the last, partial cycle 
     }
 
 }
