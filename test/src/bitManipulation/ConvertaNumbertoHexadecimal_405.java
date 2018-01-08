@@ -23,13 +23,13 @@ Output:
 */
 public class ConvertaNumbertoHexadecimal_405 {
 
-    public String toHex(int num) {
+    public String toHex(int num) {  // 4 bits group to one char in hex
         if (num==0) return "0";
         StringBuilder res= new StringBuilder();
         char[] hex= {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
         while(num!=0) {
-            res.append(hex[(num&15)]);
-            num>>>=4;
+            res.append(hex[(num&15)]);  // 15 is 1111 in binary
+            num>>>=4;                   // signless shift
         }
         return res.reverse().toString();
     }
