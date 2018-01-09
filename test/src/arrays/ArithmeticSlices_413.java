@@ -27,7 +27,7 @@ public class ArithmeticSlices_413 {
         if (a==null || a.length<3) return 0;
         int res=0, cur=0;
         for (int i=2;i<a.length;++i) {
-            if (a[i]==a[i-1] && a[i]==a[i-2]) {
+            if (a[i]-a[i-1] == a[i-1]-a[i-2]) {
                 cur++;                         // if current slice length=x, when add 1 more number at end
                 res+=cur;                      // new slices we get: 1 length=x+1, 1 length=x, 1 length=x-1... 1 length 3
             }                                  // sums to x+1-end+1, end=3, total x-1 new slices, here x=cur+2, so cur+1 new slices
