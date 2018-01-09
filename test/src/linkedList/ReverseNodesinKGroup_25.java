@@ -24,7 +24,7 @@ public class ReverseNodesinKGroup_25 {
                 if (tail==null) return dHead.next;
             }
             
-            while (pre.next!=tail){
+            while (pre.next!=tail){   // reverse k nodes by swapping every cur.next to front
                 then=cur.next;
                 cur.next=then.next;
                 then.next=pre.next;   // not cur but pre.next
