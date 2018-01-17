@@ -25,7 +25,7 @@ public class SuperUglyNumber_313 {
                 res[i]=Math.min(res[i], primes[j]*res[count[j]]);
             }
             for (int j=0;j<count.length;++j) {
-               if (res[i]==primes[j]*res[count[j]]) ++count[j];  // can not break, eg. 6=3*2
+               if (res[i]==primes[j]*res[count[j]]) ++count[j];  // can not break halfway, eg. 6=3*2
             }
         }        
         return res[n-1];
