@@ -36,9 +36,9 @@ public class ValidateIPAddress_468 {
         if (IP==null || IP.length()<7) return "Neither";
         char first=IP.charAt(0);
         char last=IP.charAt(IP.length()-1);
-        if (".:".indexOf(first)>-1 || ".:".indexOf(last)>-1) return "Neither";
+        if (".:".indexOf(first)>-1 || ".:".indexOf(last)>-1) return "Neither";  // extra .or: on start or end
         
-        String[] v4=IP.split("\\.");
+        String[] v4=IP.split("\\.");   // . without\\ is any character in regex
         String[] v6=IP.split("\\:");
         
         if (v4.length==4) {
@@ -64,7 +64,7 @@ public class ValidateIPAddress_468 {
         for (String i:v4) {
             int cur=0;
             if (i.length()<1 || i.length()>3) return false;
-            if (i.length()>1 && i.charAt(0)=='0') return false;
+            if (i.length()>1 && i.charAt(0)=='0') return false;   // no leading 0
             for (char c:i.toCharArray()) {
                 if (c<'0' || c>'9') return false;
                 cur=10*cur+c-'0';
