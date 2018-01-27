@@ -1,8 +1,5 @@
 package general;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 /*
 Implement a basic calculator to evaluate a simple expression string.
 
