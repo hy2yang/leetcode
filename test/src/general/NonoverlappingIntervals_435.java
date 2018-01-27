@@ -37,12 +37,16 @@ public class NonoverlappingIntervals_435 {
     
     public int eraseOverlapIntervals(Interval[] intervals) {
         if (intervals==null || intervals.length<2) return 0;        
-        Arrays.sort(intervals, new endComparator());
+        Arrays.sort(intervals, new Comparator<Interval>(){
+            public int compare(Interval o1, Interval o2) {   // sort by ends      
+            return o1.end-o2.end;
+            }
+        });
         int end=intervals[0].end;
         int count=0;                             // max non-overlaping intervals
         
         for (int i=1;i<intervals.length;++i) {
-            if (intervals[i].start<=end) {
+            if (intervals[i].start>=end) {
                 ++count;
                 end=intervals[i].end;
             }
