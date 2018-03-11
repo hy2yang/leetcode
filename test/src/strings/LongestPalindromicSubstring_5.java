@@ -10,6 +10,10 @@ public class LongestPalindromicSubstring_5 {
         int right=arr.length-1;
         int lo,hi,next;
         for(int i=0;i<arr.length-1;){
+            if (i+1<maxlen/2 || arr.length-i<maxlen/2){
+                ++i;
+                continue;
+            }
             lo=i;hi=i;
             while (hi+1<arr.length && arr[lo]==arr[hi+1]) ++hi;  
             next=hi+1;
