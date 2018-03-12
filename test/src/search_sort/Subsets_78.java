@@ -23,8 +23,29 @@ If nums = [1,2,3], a solution is:
 ]
 */
 public class Subsets_78 {
+    
+    public List<List<Integer>> subsets(int[] a) {
+        return subsets_rec(a, a.length-1);
+    }
+    
+    private List<List<Integer>> subsets_rec(int[] nums, int end) {
+        List<List<Integer>> res= new ArrayList<>();
+        if (end==-1) {
+            res.add(new ArrayList<>());
+            return res;
+        }
+        
+        for (List<Integer> i :  subsets_rec(nums, end-1)) { 
+            res.add(i);
+            List<Integer> temp = new ArrayList<>(i);
+            temp.add(nums[end]);
+            res.add(temp);
+        }
+        return res;
+    }
+    
 
-    public List<List<Integer>> subsets(int[] nums) {
+    public List<List<Integer>> subsets_dfs(int[] nums) {
         List<List<Integer>> res= new ArrayList<>();
         dfs(res, new ArrayList<Integer>(), nums, 0);
         return res;
@@ -39,5 +60,7 @@ public class Subsets_78 {
             wip.remove(wip.size());
         }
     }
+    
+    
     
 }
