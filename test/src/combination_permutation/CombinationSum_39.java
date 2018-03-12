@@ -29,8 +29,7 @@ public class CombinationSum_39 {
     }
     
     private List<List<Integer>>  combinationSum_rec(int[] candidates, int target, int start){         
-        List<List<Integer>> res= new ArrayList<List<Integer>>();
-        
+        List<List<Integer>> res= new ArrayList<List<Integer>>();        
         for (int i=start;i<candidates.length;++i) {
             if (candidates[i]<target) {
                 for (List<Integer> wip: combinationSum_rec(candidates, target-candidates[i], i)) {
