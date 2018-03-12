@@ -23,17 +23,18 @@ A solution set is:
 public class CombinationSum_39 {
     
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        if (candidates==null || candidates.length<1) return new ArrayList<>();
-        return combinationSum(candidates, target, 0);
+        if (candidates==null || candidates.length<1) return new ArrayList<>();                
+        Arrays.sort(candidates); 
+        return combinationSum_rec(candidates, target, 0);
     }
     
-    private List<List<Integer>>  combinationSum(int[] candidates, int target, int start){         
-        Arrays.sort(candidates); 
+    private List<List<Integer>>  combinationSum_rec(int[] candidates, int target, int start){         
         List<List<Integer>> res= new ArrayList<List<Integer>>();
+        
         for (int i=start;i<candidates.length;++i) {
             if (candidates[i]<target) {
-                for (List<Integer> wip:combinationSum(candidates, target-candidates[i], i)) {
-                    wip.add(0, candidates[i]);
+                for (List<Integer> wip: combinationSum_rec(candidates, target-candidates[i], i)) {
+                    wip.add(candidates[i]);
                     res.add(wip);
                 }
             }
@@ -50,13 +51,13 @@ public class CombinationSum_39 {
     public List<List<Integer>> combinationSum_2(int[] candidates, int target) {
         if (candidates==null || candidates.length<1) return new ArrayList<>();
         Arrays.sort(candidates);
-        ArrayList<Integer> wip=new ArrayList<>();   
-        ArrayList<List<Integer>> res= new ArrayList<List<Integer>>();
+        List<Integer> wip=new ArrayList<>();   
+        List<List<Integer>> res= new ArrayList<>();
         combinationSum_2(candidates, target, wip, 0, 0, res);
         return res;
     }
     
-    private void combinationSum_2(int[] candidates, int target, ArrayList<Integer> wip, int pos, int start, ArrayList<List<Integer>> res ) {
+    private void combinationSum_2(int[] candidates, int target, List<Integer> wip, int pos, int start, List<List<Integer>> res ) {
         if (target<0 ) return;        
         if (target==0) {
             ArrayList<Integer> temp=new ArrayList<>();

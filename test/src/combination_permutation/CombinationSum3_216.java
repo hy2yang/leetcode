@@ -20,7 +20,7 @@ Output:
 [[1,2,6], [1,3,5], [2,3,4]]
 
 */
-public class CombinationSum3 {
+public class CombinationSum3_216 {
     
     public List<List<Integer>> combinationSum3(int k, int n) {
         if (k<1 || n<1) return new ArrayList<>();
@@ -50,7 +50,7 @@ public class CombinationSum3 {
         }
     }
     
-    public List<List<Integer>> combinationSum(int k, int n) {
+    public List<List<Integer>> combinationSum3_2(int k, int n) {
         if (k<1 || n<1) return new ArrayList<>();
         return combinationSum(k, n, 0);
     }
@@ -61,7 +61,7 @@ public class CombinationSum3 {
         for (int i=start+1;i<10;++i) {
             if (i<n) {
                 for (List<Integer> wip:combinationSum(k-1, n-i, i)) {
-                    wip.add(0, i);
+                    wip.add(i);
                     res.add(wip);
                 }
             }
