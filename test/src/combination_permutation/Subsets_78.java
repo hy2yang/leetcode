@@ -1,4 +1,4 @@
-package search_sort;
+package combination_permutation;
 
 import java.util.ArrayList;
 import java.util.List;
