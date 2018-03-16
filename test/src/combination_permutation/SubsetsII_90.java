@@ -41,7 +41,7 @@ public class SubsetsII_90 {
             res.add(temp);
         }
         else {            
-            if ( !(cur>0 && nums[cur]==nums[cur-1] && !used[cur-1])) {
+            if ( !(cur>0 && nums[cur]==nums[cur-1] && !used[cur-1])) {  // add dup number only if already exist
                 used[cur]=true;
                 helper(res,nums,used,cur+1);
             }            

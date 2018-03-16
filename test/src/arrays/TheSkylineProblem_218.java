@@ -43,9 +43,9 @@ public class TheSkylineProblem_218 {
         
         Map<Integer, List<int[]>> stops=new TreeMap<>();
         for (int[] cur:b) {
-            stops.putIfAbsent(cur[0], new ArrayList<int[]>());
+            if (!stops.containsKey(cur[0])) stops.put(cur[0], new ArrayList<int[]>());
             stops.get(cur[0]).add(cur);
-            stops.putIfAbsent(cur[1], new ArrayList<int[]>());
+            if (!stops.containsKey(cur[1])) stops.put(cur[1], new ArrayList<int[]>());
             stops.get(cur[1]).add(cur);
         }
         
@@ -53,12 +53,12 @@ public class TheSkylineProblem_218 {
         
         for (int i: stops.keySet()) {
             for (int[] cur: stops.get(i)) {
-                if (cur[1]==i) q.remove(cur);  // if it's right edge, remove
-                else q.add(cur);               // add if it's left egde
+                if (cur[1]==i) q.remove(cur);  // if i is end of a building, remove
+                else q.add(cur);               // add if it's start
             }
             
-            int height= q.isEmpty()? 0:q.peek()[2];  //current height is 0 or highest building
-            if (res.isEmpty() || res.get(res.size()-1)[1]!=height) {  // only add if first building or the height changes
+            int height= q.isEmpty()? 0:q.peek()[2];
+            if (res.isEmpty() || res.get(res.size()-1)[1]!=height) {  // height changes
                 res.add(new int[]{i,height});
             }            
         }
@@ -68,8 +68,8 @@ public class TheSkylineProblem_218 {
     
     class hComparator implements Comparator<int[]>{
         @Override
-        public int compare(int[] o1, int[] o2) {            
-            return o2[2]-o1[2];   // we want to peek for highest, so higher ones have smaller ranks
+        public int compare(int[] o1, int[] o2) {  // we want tallest on queue head      
+            return -(o1[2]-o2[2]);                // PriorityQueue put least element on head
         }        
     }
 
