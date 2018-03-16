@@ -14,33 +14,37 @@ A solution is ["cats and dog", "cat sand dog"].
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 public class WordBreak2_140 {
     
-    HashMap<Integer, List<String>> dp = new HashMap<>();             // stores valid breaks after each position i
-
     public List<String> wordBreak(String s, List<String> wordDict) {
+        HashMap<Integer, List<String>> dp = new HashMap<>(); // stores valid breaks after each position i
         int maxlen = 0;
-        for(String temp : wordDict) {            
+        Set<String> wordSet = new HashSet<>();
+        for(String temp : wordDict) {   
+            wordSet.add(temp);
             if (temp.length()>maxlen) maxlen=temp.length();
         }
-        return addSpaces(s, wordDict, 0, maxlen);
+        return addSpaces(s, wordSet, 0, maxlen, dp);
     }
 
-    private List<String> addSpaces(String s, List<String> wordDict, int start, int maxlen) {
+    private List<String> addSpaces(String s, Set<String> wordDict, int start, int maxlen, Map<Integer, List<String>> dp) {
         List<String> words = new ArrayList<>();
         if (start == s.length()) {
             words.add("");
             return words;
         }
-        for (int j = start + 1; j <= s.length(); ++j) {
+        for (int j = start + 1;j <= s.length(); ++j) {
             if ( j > maxlen + start ) break;
             if (wordDict.contains(s.substring(start, j))) {
                 List<String> back;
                 if (dp.containsKey(j)) back = dp.get(j);
-                else back = addSpaces(s, wordDict, j, maxlen);
+                else back = addSpaces(s, wordDict, j, maxlen, dp);
                 for (String temp : back)
                     words.add(s.substring(start, j) + (temp.equals("")? "":" ") + temp);
             }
