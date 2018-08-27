@@ -1,6 +1,5 @@
 package strings;
 
-import java.util.Arrays;
 
 /*
 Given a non-empty string check if it can be constructed by 

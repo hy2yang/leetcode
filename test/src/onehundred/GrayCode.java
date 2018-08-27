@@ -6,8 +6,6 @@ import java.util.List;
 public class GrayCode {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
     }
     
     public List<Integer> grayCode(int n) {

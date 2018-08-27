@@ -1,5 +1,7 @@
 package linkedList;
 
+import java.util.ArrayDeque;
+
 //Given a singly linked list, determine if it is a palindrome.
 //Follow up: do it in O(n) time and O(1) space?
 
@@ -30,12 +32,32 @@ public class PalindromeLinkedList_234 {
         return res;
     }
     
+    public static boolean isPalindrome2(ListNode head) {
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        ListNode dhead=new ListNode(-1);
+        dhead.next=head;
+        ListNode slow=dhead,fast=dhead;
+        while (fast!=null && fast.next!=null){
+            fast=fast.next.next;            
+            slow=slow.next;
+            stack.push(slow.val);
+        }
+        if (fast==null) stack.pop();
+        slow=slow.next;
+        while (slow!=null){
+            if (slow.val!=stack.peek()) return false;
+            stack.pop();
+            slow=slow.next;
+        }
+        return true;
+    }
+    
     public static void main(String[] args) {
         ListNode p=new ListNode(1);
-        p.next=new ListNode(2);
-        p.next.next=new ListNode(3);
-        p.next.next.next=new ListNode(2);
-        p.next.next.next.next=new ListNode(1);
+        p.next=new ListNode(0);
+        p.next.next=new ListNode(0);
+        //p.next.next.next=new ListNode(2);
+        //p.next.next.next.next=new ListNode(1);
         System.out.println(isPalindrome(p));
         System.out.println(p);
     }

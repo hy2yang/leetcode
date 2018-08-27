@@ -5,11 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryTreePreorderTraversal {
-
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
-    }
     
     public List<Integer> preorderTraversalREC(TreeNode root) {
         ArrayList<Integer> res=new ArrayList<>();

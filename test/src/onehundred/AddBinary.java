@@ -3,7 +3,6 @@ package onehundred;
 public class AddBinary {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         System.out.println(addBinary("1","1"));
 
     }

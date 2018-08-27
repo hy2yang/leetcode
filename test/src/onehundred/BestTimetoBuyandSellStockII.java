@@ -1,11 +1,6 @@
 package onehundred;
 
 public class BestTimetoBuyandSellStockII {
-
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
-    }
     
     public int maxProfit(int[] prices) {
         int res=0;

@@ -6,7 +6,6 @@ import java.util.List;
 public class RestoreIPAddresses {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         for (String s :restoreIpAddresses("010010")) {
          System.out.println(s);   
         }

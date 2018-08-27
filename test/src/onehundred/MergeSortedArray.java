@@ -3,7 +3,7 @@ package onehundred;
 public class MergeSortedArray {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+
         int[] a= {2,0};
         int[] b= {1};
         merge(a,1,b,1);

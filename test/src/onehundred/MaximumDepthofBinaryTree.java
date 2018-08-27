@@ -5,8 +5,6 @@ import java.util.ArrayDeque;
 public class MaximumDepthofBinaryTree {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
     }
     
     public int maxDepthRecursive(TreeNode root) {

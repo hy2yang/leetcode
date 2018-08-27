@@ -3,7 +3,7 @@ package onehundred;
 public class SearchinRotatedSortedArray2 {
     
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+
         int[] a= {3,1};
         System.out.println(search(a,1));
 

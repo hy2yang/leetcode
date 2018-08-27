@@ -3,7 +3,7 @@ package onehundred;
 public class UniqueBinarySearchTrees {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+
             System.out.println(numTrees(3));
 
     }

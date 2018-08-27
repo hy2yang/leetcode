@@ -7,7 +7,7 @@ import java.util.List;
 public class Subsets2 {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+
         int[] a= {1,2,2};
         subsetsWithDup(a);
     }

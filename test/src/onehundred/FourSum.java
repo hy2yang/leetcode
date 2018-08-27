@@ -4,7 +4,7 @@ import java.util.*;
 public class FourSum {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+
         int[] a= {-1,0,-5,-2,-2,-4,0,1,-2};
         System.out.print(fourSum(a,-9));
 

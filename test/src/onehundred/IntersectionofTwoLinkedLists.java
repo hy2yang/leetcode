@@ -3,7 +3,7 @@ package onehundred;
 public class IntersectionofTwoLinkedLists {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+
 
     }
     

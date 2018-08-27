@@ -6,7 +6,7 @@ import java.util.List;
 public class Triangle {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+
         List<List<Integer>> t=new ArrayList<>();
         ArrayList<Integer> a=new ArrayList<Integer>();
         ArrayList<Integer> b=new ArrayList<Integer>();

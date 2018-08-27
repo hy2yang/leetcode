@@ -4,7 +4,6 @@ package onehundred;
 public class LongestPalindromicSubstring {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         System.out.println(longestPalindrome("bb"));
         System.out.println(7/2);
     }

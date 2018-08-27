@@ -4,7 +4,6 @@ import java.util.*;
 public class LetterCombinationsOfPhoneNumber {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         List<String> result=letterCombinations("22");
         for (String s: result) {
             System.out.print(s+" ");

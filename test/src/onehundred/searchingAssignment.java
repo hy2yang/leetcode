@@ -4,7 +4,7 @@ import java.util.Arrays;
 public class searchingAssignment {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+
         int[] i1={-85,14,35,-8,54,-71,26,79};
         System.out.println( findPeak(i1) );
         find2SumClosestTo0(i1);

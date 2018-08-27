@@ -4,7 +4,6 @@ import java.util.*;
 public class CombinationSumII {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         int[] a= {2,2,3,6,7};
         System.out.print(combinationSum2(a,7));
     }
