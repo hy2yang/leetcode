@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 
 /*
 Design and implement a data structure for Least Frequently Used (LFU) cache. It should support the following operations: get and put.
@@ -48,30 +47,30 @@ public class LFUCache_460 {
 	private class LfuNode{
 		int key;
 		int value;
-		int f;
+		int freq;
 		
 		LfuNode(int k, int v){	
 			this.key = k;
 			this.value = v;
-			this.f = 0;
+			this.freq = 0;
 		}
 	}
 	
 	private int capacity;
 	private int minF;
-	private Map<Integer, LfuNode> m ;
-	private TreeMap<Integer, LinkedHashSet<Integer>> fMap;
+	private Map<Integer, LfuNode> nodeMap ;
+	private Map<Integer, LinkedHashSet<Integer>> freqMap;
 	
 	public LFUCache_460(int capacity) {
 		this.capacity = capacity;
 		minF = 0;		
-		m = new HashMap<>();
-		fMap = new TreeMap<>();
+		nodeMap = new HashMap<>();
+		freqMap = new HashMap<>();
 	}
 
 	public int get(int key) {
-		if (m.containsKey(key)) {
-			LfuNode cur = m.get(key);
+		if (nodeMap.containsKey(key)) {
+			LfuNode cur = nodeMap.get(key);
 			promote(cur);
 			return cur.value;
 		}
@@ -81,50 +80,55 @@ public class LFUCache_460 {
 	public void put(int key, int value) {
         if (capacity <= 0) return;
 		
-		if (m.containsKey(key)) {
-			LfuNode cur = m.get(key);
+		if (nodeMap.containsKey(key)) {
+			LfuNode cur = nodeMap.get(key);
 			cur.value = value;
             promote(cur);
 		} 
 		else {
-            if (m.size()==capacity) {
+            if (nodeMap.size()==capacity) {
 			    this.invalidate();
 		    }
 			LfuNode cur = new LfuNode(key, value);
 			minF = 0;
-            m.put(key, cur);
-		    putIntoFMap(cur);
+            nodeMap.put(key, cur);
+		    putIntoFreqMap(cur);
 		}
 	}
 	
-	private void putIntoFMap(LfuNode cur) {		
-		LinkedHashSet<Integer> temp = fMap.getOrDefault(cur.f, new LinkedHashSet<>());
-		temp.add(cur.key);
-		fMap.put(cur.f, temp);		
+	private void putIntoFreqMap(LfuNode cur) {	
+		if (freqMap.containsKey(cur.freq)) {
+			freqMap.get(cur.freq).add(cur.key);
+		}
+		else {
+			LinkedHashSet<Integer> temp =new LinkedHashSet<>();
+			temp.add(cur.key);
+			freqMap.put(cur.freq, temp);
+		}
 	}
 	
 	private void promote(LfuNode cur) {
-		int freq = cur.f;
+		int freq = cur.freq;
 
-		Set<Integer> thisFSet = fMap.get(freq);
-		if (thisFSet != null) {
-			thisFSet.remove(cur.key);
-			if (thisFSet.isEmpty())
-				fMap.remove(freq);				
+		Set<Integer> thisFSet = freqMap.get(freq);
+		thisFSet.remove(cur.key);
+		if (thisFSet != null && thisFSet.isEmpty()) {
+			freqMap.remove(freq);
+			if (freq == minF) {
+				++minF;
+			}
 		}
-		++cur.f;		
-		putIntoFMap(cur);
-        minF = fMap.firstKey();
+		++cur.freq;		
+		putIntoFreqMap(cur);
 	}
 	
 	private void invalidate() {
-		LinkedHashSet<Integer> minFSet = fMap.get(minF);
+		LinkedHashSet<Integer> minFSet = freqMap.get(minF);
 		int key = minFSet.iterator().next();
 		minFSet.remove(key);
-		m.remove(key);
+		nodeMap.remove(key);
 		if (minFSet.isEmpty()) {
-			fMap.remove(minF);
-			minF = fMap.isEmpty()? 0:fMap.firstKey();
+			freqMap.remove(minF);
 		}
 	}
 	
