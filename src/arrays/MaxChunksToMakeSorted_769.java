@@ -28,4 +28,17 @@ arr[i] will be a permutation of [0, 1, ..., arr.length - 1]
 */
 public class MaxChunksToMakeSorted_769 {
 
+    public int maxChunksToSorted(int[] arr) {
+        int max = 0, res = 0;
+        for (int i=0;i<arr.length;++i){
+            if (arr[i]>max) max = arr[i];
+            if (max==i){
+                ++res;
+            }
+        }
+        return res;
+    }
+
+    // keep track of the max value so far
+    // If the max equals i which is arr[i] in the sorted array, then we found a chunk here
 }
