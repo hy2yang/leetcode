@@ -16,13 +16,14 @@ Return true because "leetcode" can be segmented as "leet code".
 public class WordBreak_139 {
     
     public boolean wordBreak(String s, List<String> wordDict) {
+        char[] cs = s.toCharArray();
         int len=s.length();
         boolean[] canBeStart=new boolean[len+1];    // i can be start <-> i=0 or 0~i-1 can be broken into dict words
         canBeStart[0]=true;
         for (int i=0;i<len+1;++i) {        //  start
             if (canBeStart[i]) {
                 for (int j=i+1;j<len+1;++j) {    // end
-                    if (wordDict.contains(s.substring(i, j))) canBeStart[j]=true;
+                    if (wordDict.contains(new String(cs, i, j-i))) canBeStart[j]=true;
                 }
             }            
         }
