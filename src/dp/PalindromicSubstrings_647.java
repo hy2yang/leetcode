@@ -29,11 +29,32 @@ public class PalindromicSubstrings_647 {
             dp[i][i]=true;
             ++res;
             for (int j=i+1;j<len;++j) {
-                dp[i][j] = cs[j]==cs[i] && ( j-i==1 || dp[i+1][j-1] );
+                if (cs[i]!=cs[j]) continue;
+                dp[i][j] =  j-i==1 || dp[i+1][j-1] ;
                 if (dp[i][j]) ++res;
             }
         }
         return res;
+    }
+
+    public int countSubstrings2(String s) {   // even dp have time complexity O(n^2)
+        int res=0;                            // so this "brute" method won't be slower
+        char[] cs = s.toCharArray();          // it might be faster due to early termination on impossible chars
+        for(int i=0;i<s.length();i++){
+            res += extend(cs,i,i);//odd length
+            res += extend(cs,i,i+1);//even length
+        }
+        return res;
+    }
+
+    private int extend(char[] cs, int left, int right){
+        int count=0;
+        while( left>=0 && right<cs.length && cs[left]==cs[right] ){
+            --left;
+            ++right;
+            ++count;
+        }
+        return count;
     }
     
 }
