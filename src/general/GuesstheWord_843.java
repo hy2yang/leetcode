@@ -1,10 +1,7 @@
 package general;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /*
 We are given a word list of unique words, each word is 6 letters long, and one word in this list is chosen as secret.
@@ -73,7 +70,7 @@ public class GuesstheWord_843 {
     }
 
     private String choose(List<String> ca, String attempt){
-        if (attempt=="") return ca.get(new Random().nextInt(ca.size()));
+        if (attempt.equals("")) return ca.get(new Random().nextInt(ca.size()));
         String res="";
         int match = 6, cur;
         for (String i:ca){
