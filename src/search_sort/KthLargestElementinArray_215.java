@@ -22,21 +22,14 @@ public class KthLargestElementinArray_215 {
     }
     
     private int partition (int[] arr, int lo, int hi) {  // the same partition used in qucik sort
-        int i=lo,j=hi+1;
-        while (true) {
-            while (arr[++i]<arr[lo]) {
-                if ( i==hi ) break;
+        int pivot=lo-1, pval = arr[hi];
+        for (int i=lo;i<hi;++i){
+            if (arr[i]<pval){
+                swap(arr, ++pivot, i);
             }
-            
-            while (arr[lo]<=arr[--j]) {
-                if ( j==lo ) break;
-            }            
-            
-            if(i>=j) break;
-            swap(arr, i, j);
         }
-        swap(arr,lo,j);
-        return j;
+        swap(arr, ++pivot, hi);
+        return pivot;
     }
     
 }
