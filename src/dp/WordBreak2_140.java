@@ -21,12 +21,12 @@ import java.util.Set;
 
 
 public class WordBreak2_140 {
-    
+
     public List<String> wordBreak(String s, List<String> wordDict) {
         HashMap<Integer, List<String>> dp = new HashMap<>(); // stores valid breaks after each position i
         int maxlen = 0;
-        Set<String> wordSet = new HashSet<>();
-        for(String temp : wordDict) {   
+        HashSet<String> wordSet = new HashSet<>();
+        for(String temp : wordDict) {
             wordSet.add(temp);
             if (temp.length()>maxlen) maxlen=temp.length();
         }
@@ -39,14 +39,13 @@ public class WordBreak2_140 {
             words.add("");
             return words;
         }
-        for (int j = start + 1;j <= s.length(); ++j) {
-            if ( j > maxlen + start ) break;
-            if (wordDict.contains(s.substring(start, j))) {
-                List<String> back;
-                if (dp.containsKey(j)) back = dp.get(j);
-                else back = addSpaces(s, wordDict, j, maxlen, dp);
+        int end = maxlen+start<s.length()? maxlen+start:s.length();
+        for (int j = start + 1;j <= end; ++j) {
+            String cut = s.substring(start, j);
+            if (wordDict.contains(cut)) {
+                List<String> back = dp.containsKey(j)? dp.get(j):addSpaces(s, wordDict, j, maxlen, dp);
                 for (String temp : back)
-                    words.add(s.substring(start, j) + (temp.equals("")? "":" ") + temp);
+                    words.add(cut + (temp.equals("")? "":" ") + temp);
             }
 
         }
