@@ -1,5 +1,7 @@
 package general;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -45,5 +47,33 @@ public class HandofStraights_846 {
 
         }
         return true;
+    }
+
+    public boolean isNStraightHand_faster(int[] hand, int W) {
+        if (hand.length%W!=0) return false;
+
+        Map<Integer, Integer> freq = new TreeMap<>();  // get natual order of cards
+        Deque<Integer> q = new ArrayDeque<>(); // records number of straights for each start
+
+        for (int c:hand){
+            freq.put(c, freq.getOrDefault(c, 0)+1);
+        }
+        int open = 0;  // number of sequences to be finished
+        int pre = -2; // previous number aka end of sequence
+        for (int cur: freq.keySet()){
+            int count = freq.get(cur);
+
+            if (open>0 && (cur!=pre+1 || count<open)) return false;  // can't append all open sequences
+
+            q.offer(count-open); // count left after appending open sequences
+            open = count;
+            if (q.size()==W){
+                open -= q.poll();  // end {num of start at cur-W} open sequences
+            }
+
+            pre = cur;
+        }
+
+        return open==0;
     }
 }
