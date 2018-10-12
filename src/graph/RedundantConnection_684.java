@@ -49,12 +49,12 @@ public class RedundantConnection_684 {
     }
 
     class UF{
-        int[] upper;
+        int[] parent;
 
         UF(int size){
-            upper = new int[size];
-            for (int i=1;i<upper.length;++i){
-                upper[i]=i;
+            parent = new int[size];
+            for (int i = 1; i< parent.length; ++i){
+                parent[i]=i;
             }
         }
 
@@ -63,14 +63,14 @@ public class RedundantConnection_684 {
             int rootB = find(b);
             if (rootA==rootB) return false;
 
-            upper[rootB]=rootA;     // simple quick union
+            parent[rootB]=rootA;     // simple quick union
             return true;
         }
 
         int find(int a){
-            while (upper[a]!=a){
-                upper[a]=upper[upper[a]];  // path halving
-                a=upper[a];
+            while (parent[a]!=a){
+                parent[a]= parent[parent[a]];  // path halving
+                a= parent[a];
             }
             return a;
         }

@@ -1,4 +1,4 @@
-package general;
+package intervals;
 /*
 Given a collection of intervals, find the minimum number of intervals you need to remove 
 to make the rest of the intervals non-overlapping.
@@ -25,13 +25,6 @@ Explanation: You don't need to remove any of the intervals since they're already
 
 import java.util.Arrays;
 import java.util.Comparator;
-
-class Interval {
-    int start;
-    int end;
-    Interval() { start = 0; end = 0;}
-    Interval(int s, int e) {start = s;end = e;    }
-}
 
 public class NonoverlappingIntervals_435 {
     

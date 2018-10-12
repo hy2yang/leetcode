@@ -1,4 +1,4 @@
-package general;
+package trie;
 
 import java.util.HashMap;
 

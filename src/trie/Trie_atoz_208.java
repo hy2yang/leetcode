@@ -1,4 +1,4 @@
-package general;
+package trie;
 
 
 // utilizing "all inputs are consist of lowercase letters a-z"
