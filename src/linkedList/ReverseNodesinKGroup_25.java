@@ -11,28 +11,34 @@ For k = 2, you should return: 2->1->4->3->5
 For k = 3, you should return: 3->2->1->4->5 
 */
 public class ReverseNodesinKGroup_25 {
-    
+
     public ListNode reverseKGroup(ListNode head, int k) {
         if (head==null || head.next==null) return head;
         ListNode dHead=new ListNode(-1);
         dHead.next=head;
-        ListNode pre=dHead, cur=pre.next, then, tail=dHead;
-        
-        while (true){            
+        ListNode pre=dHead, tail=dHead;
+
+        while (true){
             for (int i=0;i<k;++i){
                 tail=tail.next;
                 if (tail==null) return dHead.next;
             }
-            
-            while (pre.next!=tail){   // reverse k nodes by swapping every cur.next to front
-                then=cur.next;
-                cur.next=then.next;
-                then.next=pre.next;   // not cur but pre.next
-                pre.next=then;
-            }
-            tail=cur;                 
-            pre=cur;
-            cur=cur.next;
+            ListNode newPre = pre.next;
+            reverseBetween(pre, tail);
+            pre = newPre;
+            tail =pre;
+        }
+    }
+
+    private void reverseBetween(ListNode dHead, ListNode tail){
+        ListNode cur = dHead.next;
+        ListNode temp = cur.next;
+        ListNode end = tail.next;
+        while (temp!=end) {
+            cur.next = temp.next;
+            temp.next=dHead.next;
+            dHead.next=temp;
+            temp=cur.next;
         }
     }
 
