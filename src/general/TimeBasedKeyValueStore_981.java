@@ -42,14 +42,17 @@ The timestamps for all TimeMap.set operations are strictly increasing.
 TimeMap.set and TimeMap.get functions will be called a total of 120000 times (combined) per test case.
 */
 
-import java.util.*;
 
-class TimeBasedKey-ValueStore_981 {
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
+public class TimeBasedKeyValueStore_981 {
 
     private Map<String, TreeMap<Integer, String>> out;
         
-    public TimeBasedKey-ValueStore_981() {
-        out = new HashMap<String, TreeMap<Integer, String>>();
+    public TimeBasedKeyValueStore_981() {
+        out = new HashMap<>();
     }
     
     public void set(String key, String value, int timestamp) {

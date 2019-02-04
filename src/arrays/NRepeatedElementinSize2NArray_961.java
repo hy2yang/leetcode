@@ -24,7 +24,7 @@ A.length is even
 import java.util.Set;
 import java.util.HashSet;
 
-class N-RepeatedElementinSize2NArray_961 {
+public class NRepeatedElementinSize2NArray_961{
 
     // 2N elements, N+1 elements, one repeates N times
     // so the rest N elements has no duplicate
