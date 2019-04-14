@@ -22,7 +22,7 @@ Note:
     1 <= time.length <= 60000
     1 <= time[i] <= 500
  */
-public class PairsofSongsWithTotalDurationsDivisibleby60_1013 {
+public class PairsofSongsWithTotalDurationsDivisibleby60_1010 {
 
     public int numPairsDivisibleBy60(int[] time) {
         int[] r = new int[61]; //0-59

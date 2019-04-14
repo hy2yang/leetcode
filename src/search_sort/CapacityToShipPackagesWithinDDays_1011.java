@@ -44,7 +44,7 @@ Note:
     1 <= D <= weights.length <= 50000
     1 <= weights[i] <= 500
  */
-public class CapacityToShipPackagesWithinDDays_1014 {
+public class CapacityToShipPackagesWithinDDays_1011 {
 
     public int shipWithinDays(int[] weights, int D) {
         int max = 0;
